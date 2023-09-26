@@ -1906,7 +1906,7 @@ input[type=checkbox] {
 }
 .about-avatar {
   position: relative;
-  margin: 0rem auto 1rem;
+  margin: auto auto 10rem;
   width: 10rem;
   height: 10rem;
   z-index: 3;
