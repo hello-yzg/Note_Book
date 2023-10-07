@@ -1925,6 +1925,7 @@ input[type=checkbox] {
 .about-name {
   font-size: 1.75rem;
   font-weight: bold;
+  margin: -6rem auto auto;
 }
 .about-intro {
   font-size: 1rem;
