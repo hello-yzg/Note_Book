@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.hello-yzg.cn/Android+%23+Surface+View+and+Texture+View-001.png">
 <meta property="article:published_time" content="2023-10-17T06:22:25.980Z">
-<meta property="article:modified_time" content="2023-10-20T08:43:18.000Z">
+<meta property="article:modified_time" content="2023-10-20T08:48:56.000Z">
 <meta property="article:author" content="Grit">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary_large_image">
@@ -305,7 +305,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：几秒前
+                    本文最后更新于：2 分钟前
                   
                 
               </p>
@@ -313,10 +313,10 @@
             
               <div class="markdown-body">
                 
-                <h2 id="SurfaceView-amp-TextureView"><a href="#SurfaceView-amp-TextureView" class="headerlink" title="SurfaceView &amp; TextureView"></a>SurfaceView &amp; TextureView</h2><h3 id="Surface"><a href="#Surface" class="headerlink" title="Surface"></a>Surface</h3><blockquote>
+                <h3 id="SurfaceView-amp-TextureView"><a href="#SurfaceView-amp-TextureView" class="headerlink" title="SurfaceView &amp; TextureView"></a>SurfaceView &amp; TextureView</h3><h4 id="Surface"><a href="#Surface" class="headerlink" title="Surface"></a>Surface</h4><blockquote>
 <p>在 SDK 的文档中，对 Surface 的描述是这样的：“Handle onto a raw buffer that is being managed by the screen compositor”，意思是 “由屏幕显示内容合成器所管理的原始缓冲区的句柄” 。所谓原始缓冲区，是用于保存当前窗口的像素数据的缓存空间，也就是说，通过 Surface 可以获取原始缓冲区以及其中的内容。Surface 对应一块屏幕缓冲区，每个 Window 对应一个 Surface，任何 View 都画在 Surface 上，Surface 中， 借助Canvas画图，原始缓冲区用来保存数据。从代码层面看，Surface 为 BufferQueue 的 Producer 接口实现类，使生产者可以通过它的软件或硬件渲染接口为其提供 GraphicBuffer。</p>
 </blockquote>
-<h3 id="SurfaceView"><a href="#SurfaceView" class="headerlink" title="SurfaceView"></a>SurfaceView</h3><blockquote>
+<h4 id="SurfaceView"><a href="#SurfaceView" class="headerlink" title="SurfaceView"></a>SurfaceView</h4><blockquote>
 <p>Surface View 从 Android 1.0 (API level 1) 时就有。它继承自类 View，因此它本质上是一个 View。但与普通 View 不同的是，它有自己的 Surface。我们知道，一般的 Activity 包含的多个 View 会组成 View hierarchy 的树形结构，只有最顶层的 DecorView，也就是根结点视图，才是对 WMS (Window Manager Service) 可见的。这个DecorView 在 WMS 中有一个对应的 WindowState。相应地，在 SF (Surface Flinger) 中对应的 Layer。而 SurfaceView 自带一个 Surface，这个 Surface 在 WMS 中有自己对应的 WindowState，在 SF 中也会有自己的 Layer。也就是说，虽然在 App 端它仍在 View hierarchy 中，但在 Server 端 (WMS和SF) 中，它与宿主窗口是分离的。这样的好处是对这个 Surface 的渲染可以放到单独线程去做，渲染时可以有自己的 GL context 。这对于一些游戏、视频等性能相关的应用非常有益，因为它不会影响主线程对事件的响应。但它也有缺点，因为这个 Surface 不在 View hierarchy 中，它的显示也不受 View 的属性控制，所以不能进行平移，缩放等变换，也不能放在其它 ViewGroup 中，一些 View 中的特性也无法使用，例如 View.setAlpha()。 从 Android7.0 开始，SurfaceView 的窗口位置与其他 View 渲染同步更新。这意味着在屏幕上平移和缩放 SurfaceView 不会导致渲染失真。</p>
 </blockquote>
 <p>​	<img src="https://img.hello-yzg.cn/Android+%23+Surface+View+and+Texture+View-001.png" srcset="/img/loading.gif" lazyload style="zoom: 150%;" /></p>
@@ -329,15 +329,15 @@
 <li>可以直接从内存或者DMA等硬件接口取得图像数据，提升性能</li>
 </ul>
 <h6 id="应用领域（设计需求）："><a href="#应用领域（设计需求）：" class="headerlink" title="应用领域（设计需求）："></a>应用领域（设计需求）：</h6><p>SurfaceView的以上特性使它成为显示实时视频流、游戏动画等需要频繁更新的图像内容的首选。</p>
-<h3 id="GLSurfaceView"><a href="#GLSurfaceView" class="headerlink" title="GLSurfaceView"></a>GLSurfaceView</h3><blockquote>
+<h4 id="GLSurfaceView"><a href="#GLSurfaceView" class="headerlink" title="GLSurfaceView"></a>GLSurfaceView</h4><blockquote>
 <p>GLSurfaceView 从 Android 1.5 (API level 3) 开始加入 ，作为 SurfaceView 的补充。它可以看作是 SurfaceView 的一种典型使用模式。在 SurfaceView 的基础上，它加入了 EGL (Embedded Graphic Library) 的管理，并自带了渲染线程。另外它定义了用户需要实现的 Render 接口，提供了用 Strategy pattern 更改具体 Render 行为的灵活性。作为 GLSurfaceView 的 Client，只需要将实现了渲染函数的 Renderer 的实现类设置给 GLSurfaceView 即可。</p>
 </blockquote>
 <p>扩展 SurfaceView，可以调用 OpenGL ES 类库，多用于开发3D效果</p>
-<h3 id="SurfaceTexture"><a href="#SurfaceTexture" class="headerlink" title="SurfaceTexture"></a>SurfaceTexture</h3><blockquote>
+<h4 id="SurfaceTexture"><a href="#SurfaceTexture" class="headerlink" title="SurfaceTexture"></a>SurfaceTexture</h4><blockquote>
 <p>SurfaceTexture 从 Android 3.0 (API level 11) 加入。和 SurfaceView 不同的是，它对图像流的处理并不直接显示，而是转为 GL 外部纹理 (External Texture)，因此可用于图像流数据的二次处理（如 Camera 滤镜，桌面特效等）。比如 Camera 的预览数据，变成纹理后可以交给 GLSurfaceView 直接显示，也可以通过 SurfaceTexture 交给 TextureView 作为 View hierarchy 中的一个硬件加速层来显示。首先，SurfaceTexture 从图像流 (来自 Camera 预览，视频解码，GL 绘制场景等) 中获得帧数据，当调用 updateTexImage() 时，根据内容流中最近的图像更新 SurfaceTexture 对应的 GL 纹理对象，接下来，就可以像操作普通 GL 纹理一样操作它了。它核心管理着一个 BufferQueue 的 Consumer 和 Producer 两端。Producer 端用于接收内容流的源输出数据，Consumer 端用于拿 GraphicBuffer 并生成纹理。SurfaceTexture.OnFrameAvailableListener 用于让 SurfaceTexture 的使用者知道有新数据到来。JNISurfaceTextureContext 是 OnFrameAvailableListener 从 Native 到 Java 的 JNI 跳板。其中 SurfaceTexture 中的attachToGLContext() 和 detachToGLContext() 可以让多个 GL context 共享同一个内容源。</p>
 </blockquote>
 <p>扩展 Surface，获取图像流后，不绘制 GraphicBuffer 提交 SF 合成，而是生成为 ExternalTexture 提交 GL 渲染。</p>
-<h3 id="TextureView"><a href="#TextureView" class="headerlink" title="TextureView"></a>TextureView</h3><blockquote>
+<h4 id="TextureView"><a href="#TextureView" class="headerlink" title="TextureView"></a>TextureView</h4><blockquote>
 <p>TextureView 从 Android 4.0 (API level 14) 中引入。它可以将内容流直接投影到 View 中，可以用于实现 Live preview 等功能。和 SurfaceView 不同，它不会在 WMS 中单独创建窗口，而是作为 View hierachy 中的一个普通 View，因此可以和其它普通 View 一样进行移动，旋转，缩放，动画等变化。值得注意的是 TextureView 必须在硬件加速的窗口中。它显示的内容流数据可以来自 App 进程或是远端进程。TextureView 继承自 View，它与其它的 View 一样在 View hierarchy 中管理与绘制。TextureView 重载了 draw() 方法，其中主要把 SurfaceTexture 中收到的图像数据作为纹理更新到对应的 HardwareLayer 中。SurfaceTexture.OnFrameAvailableListener 用于通知 TextureView 内容流有新图像到来。SurfaceTextureListener 接口用于让TextureView 的使用者知道 SurfaceTexture 已准备好，这样就可以把 SurfaceTexture 交给相应的内容源。SurfaceTexture 可以用作非直接输出的内容流，这样就提供二次处理的机会。与 SurfaceView 直接输出相比，这样会有若干帧的延迟。同时，由于它本身管理 BufferQueue，因此内存消耗也会稍微大一些。</p>
 </blockquote>
 <h6 id="个人理解（实现原理）：-1"><a href="#个人理解（实现原理）：-1" class="headerlink" title="个人理解（实现原理）："></a>个人理解（实现原理）：</h6><p>TextureView 继承了 View 的大部分特性，例如布局，事件响应等；同时</p>
@@ -347,7 +347,7 @@
 <li>接收类型为外部纹理 (GL特有) 使得其本身必须能够与GPU进行数据交换，即开启硬件加速，开销较大</li>
 </ul>
 <h6 id="应用领域（设计需求）：-1"><a href="#应用领域（设计需求）：-1" class="headerlink" title="应用领域（设计需求）："></a>应用领域（设计需求）：</h6><p>SurfaceView的以上特性使它成为供 GL 进行图像内容再处理的首选，但并不常用。</p>
-<h2 id="对比总结"><a href="#对比总结" class="headerlink" title="对比总结"></a>对比总结</h2><ul>
+<h3 id="对比总结"><a href="#对比总结" class="headerlink" title="对比总结"></a>对比总结</h3><ul>
 <li><p><strong>在 Android 7.0 上系统 SurfaceView 的性能比 TextureView 更有优势</strong>，支持对象的内容位置和包含的应用内容同步更新，平移、缩放不会产生黑边。 <strong>在7.0以下系统如果使用场景有动画效果，可以选择性使用 TextureView</strong>。</p>
 </li>
 <li><p>由于失效 (invalidation) 和缓冲的特性，<strong>TextureView 增加了额外1~3帧的延迟显示画面更新</strong>。</p>
