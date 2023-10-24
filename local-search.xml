@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>数据结构</title>
+    <link href="/2023/76516bbda89a/"/>
+    <url>/2023/76516bbda89a/</url>
+    
+    <content type="html"><![CDATA[<h3 id="1-线性表"><a href="#1-线性表" class="headerlink" title="1. 线性表"></a>1. 线性表</h3><ul><li><p>C&#x2F;C++ 中，malloc 的结果为 void* , 因此需进行强制类型转换。</p></li><li><p>链表表头节点的优势：简化操作，具体表现在</p><ul><li>起点稳定</li><li>便于判空</li><li>统一化操作（增删链表首元素无需进行特殊处理）</li></ul></li><li><p>从freelist理解为什么新申请的内存会有脏数据，即变量初始化的必要性</p></li><li><p>两种实现方式的根本区别（基于下标）</p><table><thead><tr><th align="center"></th><th align="center">顺序表n</th><th align="center">单链表n</th></tr></thead><tbody><tr><td align="center">增删</td><td align="center">顺序插入     O (n)</td><td align="center">随机插入      O (1)</td></tr><tr><td align="center">改查</td><td align="center">随机查找     O (1)</td><td align="center">顺序查找      O (n)</td></tr></tbody></table></li><li><p>单链表的典型操作代码（指针基础）：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 定义单链表节点</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">LNode</span>&#123;</span><br>ElemType data;         <span class="hljs-comment">//数据域</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">LNode</span>* <span class="hljs-title">link</span>;</span>    <span class="hljs-comment">//指针域</span><br>&#125;* LinkList;<br><br><span class="hljs-comment">//插入</span><br>Status <span class="hljs-title function_">Insert</span> <span class="hljs-params">(LNode *L, LNode *p, ElemType item)</span><br>&#123;<br>    LNode *temp;<br>    temp = (LNode *) <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(LNode));<br>    <span class="hljs-keyword">if</span>(temp == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> ERROR;<br>    <span class="hljs-keyword">else</span> temp-&gt;data = item;<br>    temp-&gt;link = p-&gt;link;<br>    p-&gt;link = temp;<br>    <span class="hljs-keyword">return</span> OK;<br>&#125;<br><br><span class="hljs-comment">//删除</span><br>Status <span class="hljs-title function_">Delete</span> <span class="hljs-params">(LNode *L, LNode *p, ElemType *item)</span><br>&#123;<br>    <span class="hljs-keyword">if</span>(L == <span class="hljs-literal">NULL</span> || p == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> ERROR;<br>    *item = p-&gt;link-&gt;data;<br>    p-&gt;link = p-&gt;link-&gt;link;<br>    <span class="hljs-keyword">return</span> OK;<br>&#125;<br></code></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>CS</category>
+      
+      <category>基础：408</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>考试</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>两数之和</title>
     <link href="/2023/dca8257178c4/"/>
     <url>/2023/dca8257178c4/</url>
