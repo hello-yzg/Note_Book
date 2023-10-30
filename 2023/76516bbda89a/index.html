@@ -25,11 +25,13 @@
 <meta property="og:site_name" content="Grit&#39;s Note_Book">
 <meta property="og:description" content="408 数据结构笔记 - 全国硕士研究生招生考试计算机科学与技术学科联考计算机学科专业基础综合科目（408）。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.hello-yzg.cn/CS%E8%81%94%E8%80%83+%23+%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-001.jpeg">
 <meta property="article:published_time" content="2023-10-24T13:20:48.180Z">
-<meta property="article:modified_time" content="2023-10-24T14:15:42.000Z">
+<meta property="article:modified_time" content="2023-10-30T11:15:52.000Z">
 <meta property="article:author" content="Grit">
 <meta property="article:tag" content="考试">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img.hello-yzg.cn/CS%E8%81%94%E8%80%83+%23+%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-001.jpeg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -241,7 +243,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          701 字
+          1.1k 字
         
       </span>
     
@@ -252,7 +254,7 @@
         
         
         
-          4 分钟
+          6 分钟
         
       </span>
     
@@ -303,7 +305,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：几秒前
+                    本文最后更新于：1 小时前
                   
                 
               </p>
@@ -314,16 +316,16 @@
                 <h3 id="1-线性表"><a href="#1-线性表" class="headerlink" title="1. 线性表"></a>1. 线性表</h3><ul>
 <li><p>C&#x2F;C++ 中，malloc 的结果为 void* , 因此需进行强制类型转换。</p>
 </li>
-<li><p>链表表头节点的优势：简化操作，具体表现在</p>
+<li><p>链表表头节点的优势：简化操作，具体表现在：</p>
 <ul>
 <li>起点稳定</li>
 <li>便于判空</li>
 <li>统一化操作（增删链表首元素无需进行特殊处理）</li>
 </ul>
 </li>
-<li><p>从freelist理解为什么新申请的内存会有脏数据，即变量初始化的必要性</p>
+<li><p>从freelist理解为什么新申请的内存会有脏数据，即变量初始化的必要性。</p>
 </li>
-<li><p>两种实现方式的根本区别（基于下标）</p>
+<li><p>两种实现方式的根本区别（基于下标）：</p>
 <table>
 <thead>
 <tr>
@@ -347,7 +349,36 @@
 <li><p>单链表的典型操作代码（指针基础）：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 定义单链表节点</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">LNode</span>&#123;</span><br>	ElemType data;         <span class="hljs-comment">//数据域</span><br>	<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">LNode</span>* <span class="hljs-title">link</span>;</span>    <span class="hljs-comment">//指针域</span><br>&#125;* LinkList;<br><br><span class="hljs-comment">//插入</span><br>Status <span class="hljs-title function_">Insert</span> <span class="hljs-params">(LNode *L, LNode *p, ElemType item)</span><br>&#123;<br>    LNode *temp;<br>    temp = (LNode *) <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(LNode));<br>    <span class="hljs-keyword">if</span>(temp == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> ERROR;<br>    <span class="hljs-keyword">else</span> temp-&gt;data = item;<br>    temp-&gt;link = p-&gt;link;<br>    p-&gt;link = temp;<br>    <span class="hljs-keyword">return</span> OK;<br>&#125;<br><br><span class="hljs-comment">//删除</span><br>Status <span class="hljs-title function_">Delete</span> <span class="hljs-params">(LNode *L, LNode *p, ElemType *item)</span><br>&#123;<br>    <span class="hljs-keyword">if</span>(L == <span class="hljs-literal">NULL</span> || p == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> ERROR;<br>    *item = p-&gt;link-&gt;data;<br>    p-&gt;link = p-&gt;link-&gt;link;<br>    <span class="hljs-keyword">return</span> OK;<br>&#125;<br></code></pre></td></tr></table></figure></li>
 </ul>
+<h3 id="2-栈，队列和数组"><a href="#2-栈，队列和数组" class="headerlink" title="2. 栈，队列和数组"></a>2. 栈，队列和数组</h3><ul>
+<li><p>循环队列中，由于入队时队尾指针追赶头指针，出队时头指针追赶队尾指针，因此队空与队满时头尾指针相对位置相同（重合），最常见的修改方式为：设定 length 为 n 的队列存储上限为 n-1。</p>
+</li>
+<li><p>栈的应用（利用先进先出的特点）：</p>
+<ul>
+<li>表达式中括号的匹配检查</li>
+<li>计算后缀表达式</li>
+</ul>
+</li>
+<li><p>队列的应用：</p>
+<ul>
+<li>二叉树的层序遍历（后续章节介绍）</li>
+</ul>
+</li>
+<li><p>特殊矩阵的压缩存储（地址转换式）</p>
+<p><strong>推导思想为算出 i 前一行为止的项数，加上 i 行的偏移量。</strong></p>
+<ul>
+<li><p>上三角矩阵——首项：n	尾项：n - i + 1	项数：i	偏移量：j - i<br>$$<br>[(n+n-i+1)*i]&#x2F;2 + j-i<br>$$</p>
+</li>
+<li><p>下三角矩阵——首项：1	尾项：i	            项数：i	偏移量：j<br>$$<br>[(1+i)*i]&#x2F;2 + j<br>$$</p>
+</li>
+<li><p>三对角矩阵——差值：1	行项：3	           项数：i	偏移量：j - i + 1<br>$$<br>3i-1 + j-i+1<br>$$</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>​	<img src="https://img.hello-yzg.cn/CS联考+%23+数据结构-001.jpeg" srcset="/img/loading.gif" lazyload style="zoom: 50%;" /></p>
+<center style="color:#C0C0C0">图1</center>
 
+<h3 id="3-树与二叉树"><a href="#3-树与二叉树" class="headerlink" title="3. 树与二叉树"></a>3. 树与二叉树</h3>
                 
               </div>
             
@@ -418,7 +449,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年10月24日</div>
+          <div>2023年10月30日</div>
         </div>
       
       
@@ -542,6 +573,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -759,6 +796,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.1/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
