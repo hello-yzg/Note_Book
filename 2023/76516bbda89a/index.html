@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.hello-yzg.cn/CS%E8%81%94%E8%80%83+%23+%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-001.jpeg">
 <meta property="article:published_time" content="2023-10-24T13:20:48.180Z">
-<meta property="article:modified_time" content="2023-10-30T11:15:52.000Z">
+<meta property="article:modified_time" content="2023-11-03T09:32:28.000Z">
 <meta property="article:author" content="Grit">
 <meta property="article:tag" content="考试">
 <meta name="twitter:card" content="summary_large_image">
@@ -243,7 +243,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          3.2k 字
         
       </span>
     
@@ -254,7 +254,7 @@
         
         
         
-          6 分钟
+          18 分钟
         
       </span>
     
@@ -305,7 +305,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：1 小时前
+                    本文最后更新于：几秒前
                   
                 
               </p>
@@ -366,19 +366,100 @@
 <li><p>特殊矩阵的压缩存储（地址转换式）</p>
 <p><strong>推导思想为算出 i 前一行为止的项数，加上 i 行的偏移量。</strong></p>
 <ul>
-<li><p>上三角矩阵——首项：n	尾项：n - i + 1	项数：i	偏移量：j - i<br>$$<br>[(n+n-i+1)*i]&#x2F;2 + j-i<br>$$</p>
+<li><p>上三角矩阵（首项：n	尾项：n - i + 1	项数：i	偏移量：j - i          ） $[(n+n-i+1)*i]&#x2F;2 + j-i$</p>
 </li>
-<li><p>下三角矩阵——首项：1	尾项：i	            项数：i	偏移量：j<br>$$<br>[(1+i)*i]&#x2F;2 + j<br>$$</p>
+<li><p>下三角矩阵（首项：1	尾项：i	            项数：i	偏移量：j              ） $[(1+i)*i]&#x2F;2 + j $</p>
 </li>
-<li><p>三对角矩阵——差值：1	行项：3	           项数：i	偏移量：j - i + 1<br>$$<br>3i-1 + j-i+1<br>$$</p>
-</li>
-</ul>
+<li><p>三对角矩阵（差值：1	行项：3	           项数：i	偏移量：j - i + 1   ） $3i-1 + j-i+1$</p>
 </li>
 </ul>
-<p>​	<img src="https://img.hello-yzg.cn/CS联考+%23+数据结构-001.jpeg" srcset="/img/loading.gif" lazyload style="zoom: 50%;" /></p>
+</li>
+</ul>
+<p>​	<img src="https://img.hello-yzg.cn/CS联考+%23+数据结构-001.jpeg" srcset="/img/loading.gif" lazyload style="zoom: 100%;" /></p>
 <center style="color:#C0C0C0">图1</center>
 
-<h3 id="3-树与二叉树"><a href="#3-树与二叉树" class="headerlink" title="3. 树与二叉树"></a>3. 树与二叉树</h3>
+<h3 id="3-树与二叉树"><a href="#3-树与二叉树" class="headerlink" title="3. 树与二叉树"></a>3. 树与二叉树</h3><ul>
+<li><p>树结构本身是一个递归的结构。</p>
+</li>
+<li><p>含$n$个节点的树中，边数为$n-1$（由根节点出发，每个节点都需要一条边与之相连）。</p>
+</li>
+<li><p>节点所在层数 &#x3D; 路径长度 &#x3D; 节点深$(i&gt;&#x3D;0)$,  $i_{max} + 1 &#x3D; 树高（h&gt;&#x3D;1)$。</p>
+</li>
+<li><p>满二叉树教材定义有分歧（建议以定义一为主）：</p>
+<ul>
+<li>定义一：所有分支节点度均为 2，叶i子节点处在同一层</li>
+<li>定义二：仅有度为 2 和 0 的节点</li>
+</ul>
+</li>
+<li><p>完全二叉树：$0 \sim h-1$ 层为满二叉树，$h$层节点靠左排列。&#x3D;&#x3D;这里会混淆层数与高度，会意即可&#x3D;&#x3D;</p>
+</li>
+<li><p>二叉树的一些数学性质依赖等比数列求和公式（首项为1，公比为2）：</p>
+<ul>
+<li>第 i 层最大节点数：$2^i (i&gt;&#x3D;0)$</li>
+<li>高度为 h 最大节点总数： $2^h-1 (h&gt;&#x3D;1)$</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>公比为q的等比数列前n项和：$S_n&#x3D;\frac{a_1(1-q^n)}{1-q}$, 通过错位相减法证明</p>
+</blockquote>
+<ul>
+<li>具有 n 个节点的完全二叉树高为：$\lceil \log_2(n+1) \rceil$。</li>
+</ul>
+<blockquote>
+<p>$2^{h-1}-1 &lt; n \le 2^h-1$<br>$2^{h-1} &lt; n+1 \le 2^h$<br>$h-1 &lt; log_2(n+1) \le h$<br>$log_2(n+1) \le h &lt; log_2(n+1)+1$</p>
+<p>$\therefore h &#x3D; \lceil \log_2(n+1) \rceil$</p>
+</blockquote>
+<ul>
+<li>对于任意二叉树，有叶节点数为 $n_0$, 度为 1 的节点数为$n_1$, 度为 2 的节点数为$n_2$, 则 $n_0&#x3D;n_2+1$。</li>
+</ul>
+<blockquote>
+<p>记二叉树边数为 b</p>
+<p>$b&#x3D;n-1&#x3D;n_0+n_1+n_2-1$</p>
+<p>$b&#x3D;2n_2+n_1$</p>
+<p>$n_0+n_1+n_2-1&#x3D;2n_2+n_1$</p>
+<p>$\therefore n_0&#x3D;n_2+1$</p>
+</blockquote>
+<ul>
+<li>满二叉树定理可推广至k叉树：$n_0&#x3D;\sum_{i&#x3D;2}^k(i-1)n_i+1$</li>
+<li>完全二叉树的顺序存储（高度$h\ge1$, 层数$i\ge0$）<ul>
+<li>根节点存储在$A[0]$, 数组大小为$2^h-1$</li>
+<li>$A[i]$， 左子节点为$A[2i+1]$，右子节点为$A[2i+2]$</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>假设$A[i]$左子节点是最后一个节点，即通过满二叉树定理可得叶节点数为$i+1$</p>
+<p>$\therefore 左子节点地址&#x3D; i+叶子节点数&#x3D;i+(i+1)&#x3D;2i+1$</p>
+<p>假设$A[i]$右子节点是最后一个节点，即通过满二叉树定理可得叶节点数为$i+1+1$（$A[i]$度也为2）</p>
+<p>$\therefore 右子节点地址&#x3D; i+叶子节点数&#x3D;i+(i+1+1)&#x3D;2i+2$</p>
+</blockquote>
+<ul>
+<li>二叉树的链式存储（二叉链表）定义：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BinNode</span>&#123;</span><br>    ElemType data;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BinNode</span>* <span class="hljs-title">lchild</span>;</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BinNode</span>* <span class="hljs-title">rchild</span>;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>在$2n$个指针域中，有$n-1$个非空指针域（边），有$n+1$个空指针域。</li>
+<li>三叉链表对比二叉链表多了一个用来存储 parent 的指针域。</li>
+<li>二叉树必须给定中序遍历序列 + 先序遍历序列 &#x2F; 后序遍历序列，才可确定唯一的树结构。（依赖中序序列分割左右子树）</li>
+<li>二叉树进行递归遍历时，利用叶子节点的空指针域记录直接前驱与直接后继的地址，这样在进行一次遍历的同时也对树进行了线索化，之后再遍历时将不再需要递归，而是根据线索指针线性遍历即可。</li>
+<li>树的  “左孩子右兄弟” 二叉链表（与 “子节点” 二叉链表不同）存储方式，为树与二叉树的转换提供了桥梁。</li>
+<li>一棵树的后根遍历与这棵树所对应的二叉树的中序遍历相同。因为树转化为二叉树后是没有右子树的，所以最后访问的是树的根结点。</li>
+<li>对于二叉排序树，在得到先序遍历序列 &#x2F; 后序遍历序列时，中序遍历序列是隐含的，因为有序性使得左子树值一定小于根节点，右子树值一定大于根节点，由此分割左右子树。</li>
+<li>二叉排序树的查找效率在理想情况下为$O(log_2n)$, 相当于折半查找；但最坏情况下可能由于失衡而退化为线性树，查找时间复杂度为$O(n)$。</li>
+<li>对二叉排序树进行插入或删除时，插入的对象一定是叶子节点，删除时如果度为 0 或 1，也相对简单，但删除度为 2 的节点时，由于需要维持树的有序性，要找到被删除节点的直接前驱（左子树的 “右下角”）或直接后继（右子树的 “左下角”）进行代替。</li>
+<li>平衡二叉树（AVL树）在插入或删除时，需检查是否失衡：<ul>
+<li>左子树左侧过长失衡 -&gt; 沿根节点右旋</li>
+<li>左子树右侧过长失衡 -&gt; 先沿左子树节点左旋（转换为左子树左侧过长失衡），再沿根节点右旋</li>
+<li>右子树左侧过长失衡 -&gt; 先沿右子树节点右旋（转换为右子树右侧过长失衡），再沿根节点左旋</li>
+<li>右子树右侧过长失衡 -&gt; 沿根节点左旋</li>
+</ul>
+</li>
+<li>等长编码：ASCII码（8位），Unicode（16位）；不等长编码：哈夫曼编码（通过哈夫曼算法构建哈夫曼树）。</li>
+<li>哈夫曼译码：通过逐位扫描哈夫曼编码，0则进入哈夫曼树左分支，1则进入哈夫曼树右分支，直到扫描完成到达叶子节点读取译码，由于译码只存储在叶子节点中，因此具有前缀特性，即任何字符编码都不是其他任何字符编码的前缀。</li>
+</ul>
+
                 
               </div>
             
@@ -449,7 +530,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年10月30日</div>
+          <div>2023年11月3日</div>
         </div>
       
       
