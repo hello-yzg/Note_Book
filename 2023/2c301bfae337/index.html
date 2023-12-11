@@ -18,15 +18,15 @@
   <meta name="author" content="Grit">
   <meta name="keywords" content="">
   
-    <meta name="description" content="算法刷题：无重复字符的最长子串。">
+    <meta name="description" content="算法刷题：盛最多水的容器。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="无重复字符的最长子串">
-<meta property="og:url" content="https://learn.hello-yzg.cn/2023/66abd09f7aa7/">
+<meta property="og:title" content="盛最多水的容器">
+<meta property="og:url" content="https://learn.hello-yzg.cn/2023/2c301bfae337/">
 <meta property="og:site_name" content="Grit&#39;s Note_Book">
-<meta property="og:description" content="算法刷题：无重复字符的最长子串。">
+<meta property="og:description" content="算法刷题：盛最多水的容器。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-12-05T07:18:58.590Z">
-<meta property="article:modified_time" content="2023-12-05T13:03:28.000Z">
+<meta property="article:published_time" content="2023-12-08T05:30:07.320Z">
+<meta property="article:modified_time" content="2023-12-11T02:42:36.000Z">
 <meta property="article:author" content="Grit">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary_large_image">
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>无重复字符的最长子串 - Grit&#39;s Note_Book</title>
+  <title>盛最多水的容器 - Grit&#39;s Note_Book</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="无重复字符的最长子串"></span>
+            <span id="subtitle" data-typed-text="盛最多水的容器"></span>
           
         </div>
 
@@ -229,8 +229,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-05 15:18" pubdate>
-          2023年12月5日 下午
+        <time datetime="2023-12-08 13:30" pubdate>
+          2023年12月8日 下午
         </time>
       </span>
     
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          1.8k 字
         
       </span>
     
@@ -298,12 +298,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">无重复字符的最长子串</h1>
+            <h1 style="display: none">盛最多水的容器</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：6 天前
+                    本文最后更新于：几秒前
                   
                 
               </p>
@@ -311,33 +311,37 @@
             
               <div class="markdown-body">
                 
-                <h3 id="无重复字符的最长子串"><a href="#无重复字符的最长子串" class="headerlink" title="无重复字符的最长子串"></a>无重复字符的最长子串</h3><blockquote>
+                <h3 id="盛最多水的容器"><a href="#盛最多水的容器" class="headerlink" title="盛最多水的容器"></a>盛最多水的容器</h3><blockquote>
 <p>C++ Tips</p>
 <ol>
-<li>C++11引入 unordered_set（哈希表的数据结构实现，存储不重复元素）</li>
+<li>vector 长度： *.size()</li>
+<li>数组长度：std : size(*)</li>
 </ol>
 <p>Java Tips</p>
 <ol>
-<li>通过Math类使用数学函数</li>
+<li>数组长度：*.length</li>
 </ol>
 <p>Python Tips</p>
 <ol>
-<li>enumerate() 返回一个可迭代对象</li>
+<li>Python的设计哲学之一是”显式优于隐式”，因此不能使用 ++ 或 – 运算符，而是使用 +&#x3D; 1 或 -&#x3D; 1 实现自加或自减。</li>
 </ol>
 </blockquote>
 <p>题目：</p>
-<p>给定一个字符串 <code>s</code> ，请你找出其中不含有重复字符的 <strong>最长子串</strong> 的长度。</p>
-<h4 id="链表遍历"><a href="#链表遍历" class="headerlink" title="链表遍历"></a>链表遍历</h4><p>时间复杂度：O(<em>n</em>)</p>
-<p>空间复杂度：O(∣Σ∣)，其中 ∣Σ∣ 为字符集合的大小，本题中字符均为 ASCII 字符，所以 ∣Σ∣≤128。</p>
-<h5 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//c++</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        <span class="hljs-type">int</span> n = s.<span class="hljs-built_in">length</span>(), ans = <span class="hljs-number">0</span>, left = <span class="hljs-number">0</span>;<br>        unordered_set&lt;<span class="hljs-type">char</span>&gt; window; <span class="hljs-comment">// 动态枚举left至right的字符</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; n; ++right)&#123; <span class="hljs-comment">// 窗口向右扩展</span><br>            <span class="hljs-type">char</span> c = s[right];<br>            <span class="hljs-keyword">while</span> (window.<span class="hljs-built_in">count</span>(c)) <span class="hljs-comment">// 发现重复</span><br>                window.<span class="hljs-built_in">erase</span>(s[left++]); <span class="hljs-comment">// 窗口向右坍缩直至无重复，因为无法向左扩展寻找可能的更大窗口</span><br>            window.<span class="hljs-built_in">insert</span>(c);<br>            ans = <span class="hljs-built_in">max</span>(ans, right - left + <span class="hljs-number">1</span>); <span class="hljs-comment">// 更新结果</span><br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>给定一个长度为 <code>n</code> 的整数数组 <code>height</code> 。有 <code>n</code> 条垂线，第 <code>i</code> 条线的两个端点是 <code>(i, 0)</code> 和 <code>(i, height[i])</code> 。</p>
+<p>找出其中的两条线，使得它们与 <code>x</code> 轴共同构成的容器可以容纳最多的水。</p>
+<p>返回容器可以储存的最大水量。</p>
+<p><strong>说明：</strong>你不能倾斜容器。</p>
+<h4 id="贪心双指针"><a href="#贪心双指针" class="headerlink" title="贪心双指针"></a>贪心双指针</h4><p>时间复杂度：O(<em>n</em>)</p>
+<p>空间复杂度：O(1)</p>
+<h5 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//c++</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxArea</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; height)</span> </span>&#123;<br>        <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>, left = <span class="hljs-number">0</span>, right = height.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span>(left &lt; right)&#123; <span class="hljs-comment">// 双指针</span><br>            <span class="hljs-type">int</span> area = (right - left) * <span class="hljs-built_in">min</span>(height[left],height[right]);<br>            ans = <span class="hljs-built_in">max</span>(ans, area);<br>            height[left] &lt; height[right] ? ++left : --right; <span class="hljs-comment">//贪心迭代</span><br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
-<h5 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span> &#123;<br>        <span class="hljs-type">char</span>[] s_ = s.toCharArray(); <span class="hljs-comment">// 转换成 char[] 提高效率（忽略带来的空间消耗）</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> s_.length, ans = <span class="hljs-number">0</span>, left = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">boolean</span>[] has = <span class="hljs-keyword">new</span> <span class="hljs-title class_">boolean</span>[<span class="hljs-number">128</span>]; <span class="hljs-comment">// 也可以用 HashSet&lt;Character&gt;，这里使用 boolean[] 提高效率</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">right</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; right &lt; n; ++right)&#123;<br>            <span class="hljs-type">char</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> s_[right];<br>            <span class="hljs-keyword">while</span>(has[c])<br>                has[s_[left++]] = <span class="hljs-literal">false</span>;<br>            has[c]=<span class="hljs-literal">true</span>;<br>            ans = Math.max(ans, right - left + <span class="hljs-number">1</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h5 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//java</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">maxArea</span><span class="hljs-params">(<span class="hljs-type">int</span>[] height)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">ans</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, left = <span class="hljs-number">0</span>, right = height.length - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span>(left &lt; right)&#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">area</span> <span class="hljs-operator">=</span> (right - left) * Math.min(height[left], height[right]);<br>            ans = Math.max(ans, area);<br>            <span class="hljs-keyword">if</span>(height[left] &lt; height[right]) ++left;<br>            <span class="hljs-keyword">else</span> --right;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h5 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#python3</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">lengthOfLongestSubstring</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        ans = left = <span class="hljs-number">0</span><br>        window = <span class="hljs-built_in">set</span>()<br>        <span class="hljs-keyword">for</span> right, c <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(s):<br>            <span class="hljs-keyword">while</span> c <span class="hljs-keyword">in</span> window:<br>                window.remove(s[left])<br>                left += <span class="hljs-number">1</span><br>            window.add(c)<br>            ans = <span class="hljs-built_in">max</span>(ans, right - left + <span class="hljs-number">1</span>)<br>        <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure>
+<h5 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#python3</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">maxArea</span>(<span class="hljs-params">self, height: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>        ans = left = <span class="hljs-number">0</span><br>        right = <span class="hljs-built_in">len</span>(height) - <span class="hljs-number">1</span><br>        <span class="hljs-keyword">while</span> left &lt; right:<br>            area = (right - left) * <span class="hljs-built_in">min</span>(height[left], height[right])<br>            ans = <span class="hljs-built_in">max</span>(ans, area)<br>            <span class="hljs-keyword">if</span> height[left] &lt; height[right]:<br>                left += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                right -= <span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure>
 
-<h5 id="C-1"><a href="#C-1" class="headerlink" title="C"></a>C</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//c</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">lengthOfLongestSubstring</span><span class="hljs-params">(<span class="hljs-type">char</span>* s)</span> &#123;<br>    <span class="hljs-type">int</span> hash[<span class="hljs-number">128</span>] = &#123;<span class="hljs-number">0</span>&#125;; <span class="hljs-comment">// 模拟哈希表</span><br>    <span class="hljs-type">int</span> n = <span class="hljs-built_in">strlen</span>(s), ans = <span class="hljs-number">0</span>, left = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; n; ++right)&#123;<br>        hash[s[right]]++;<br>        <span class="hljs-keyword">while</span>(hash[s[right]] &gt; <span class="hljs-number">1</span>) hash[s[left++]]--;<br>        ans = ans &lt; (right-left+<span class="hljs-number">1</span>) ? (right-left+<span class="hljs-number">1</span>) : ans;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans; <br>&#125;<br></code></pre></td></tr></table></figure>
+<h5 id="C-1"><a href="#C-1" class="headerlink" title="C"></a>C</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//c</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">maxArea</span><span class="hljs-params">(<span class="hljs-type">int</span>* height, <span class="hljs-type">int</span> heightSize)</span> &#123;<br>    <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>, left = <span class="hljs-number">0</span>, right = heightSize - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span>(left &lt; right)&#123;<br>        <span class="hljs-type">int</span> area = (right - left) * (height[left] &lt; height[right] ? height[left] : height[right]);<br>        ans = ans &lt; area ? area : ans;<br>        <span class="hljs-keyword">if</span>(height[left] &lt; height[right])&#123;<br>            ++left;<br>        &#125;<br>        <span class="hljs-keyword">else</span>&#123;<br>            --right;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h5 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//javascript</span><br><span class="hljs-keyword">var</span> lengthOfLongestSubstring = <span class="hljs-keyword">function</span>(<span class="hljs-params">s</span>) &#123;<br>    <span class="hljs-keyword">let</span> ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">let</span> left = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">const</span> <span class="hljs-variable language_">window</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> right = <span class="hljs-number">0</span>; right &lt; s.<span class="hljs-property">length</span>; right++) &#123;<br>        <span class="hljs-keyword">const</span> c = s[right];<br>        <span class="hljs-keyword">while</span> (<span class="hljs-variable language_">window</span>.<span class="hljs-title function_">has</span>(c)) &#123;<br>            <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">delete</span>(s[left++]);<br>        &#125;<br>        <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">add</span>(c);<br>        ans = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(ans, right - left + <span class="hljs-number">1</span>);<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h5 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//javascript</span><br><span class="hljs-keyword">var</span> maxArea = <span class="hljs-keyword">function</span>(<span class="hljs-params">height</span>) &#123;<br>    <span class="hljs-keyword">let</span> ans = <span class="hljs-number">0</span>, left = <span class="hljs-number">0</span>, right = height.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (left &lt; right) &#123;<br>        <span class="hljs-keyword">const</span> area = (right - left) * <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(height[left], height[right]);<br>        ans = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(ans, area);<br>        <span class="hljs-keyword">if</span> (height[left] &lt; height[right]) &#123;<br>            left++;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            right--;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 
                 
@@ -362,7 +366,7 @@
   
     <span>></span>
     
-  <a href="/categories/LeetCode/%E5%9F%BA%E7%A1%80%EF%BC%9A%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/" class="category-chain-item">基础：无重复字符的最长子串</a>
+  <a href="/categories/LeetCode/%E8%BF%9B%E9%98%B6%EF%BC%9A%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/" class="category-chain-item">进阶：盛最多水的容器</a>
   
   
 
@@ -391,8 +395,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>无重复字符的最长子串</div>
-      <div>https://learn.hello-yzg.cn/2023/66abd09f7aa7/</div>
+      <div>盛最多水的容器</div>
+      <div>https://learn.hello-yzg.cn/2023/2c301bfae337/</div>
     </div>
     <div class="license-meta">
       
@@ -404,13 +408,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年12月5日</div>
+          <div>2023年12月8日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年12月5日</div>
+          <div>2023年12月11日</div>
         </div>
       
       
@@ -441,18 +445,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/2c301bfae337/" title="盛最多水的容器">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">盛最多水的容器</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/a85684359d52/" title="两数相加">
-                        <span class="hidden-mobile">两数相加</span>
+                      <a href="/2023/66abd09f7aa7/" title="无重复字符的最长子串">
+                        <span class="hidden-mobile">无重复字符的最长子串</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
