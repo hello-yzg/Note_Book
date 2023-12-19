@@ -13,16 +13,18 @@
     
     <categories>
       
+      <category>Algorithm Design</category>
+      
       <category>LeetCode</category>
       
-      <category>基础：最接近的三数之和</category>
+      <category>基础</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>Algorithm Design</tag>
+      <tag>双指针</tag>
       
     </tags>
     
@@ -40,6 +42,8 @@
     
     <categories>
       
+      <category>Algorithm Design</category>
+      
       <category>LeetCode</category>
       
       <category>基础</category>
@@ -49,7 +53,7 @@
     
     <tags>
       
-      <tag>Algorithm Design</tag>
+      <tag>双指针</tag>
       
     </tags>
     
@@ -67,6 +71,8 @@
     
     <categories>
       
+      <category>Large Model</category>
+      
       <category>ChatGPT</category>
       
       <category>基础</category>
@@ -76,7 +82,7 @@
     
     <tags>
       
-      <tag>Large Model</tag>
+      <tag>转载</tag>
       
     </tags>
     
@@ -94,6 +100,8 @@
     
     <categories>
       
+      <category>Algorithm Design</category>
+      
       <category>LeetCode</category>
       
       <category>进阶</category>
@@ -103,7 +111,9 @@
     
     <tags>
       
-      <tag>Algorithm Design</tag>
+      <tag>双指针</tag>
+      
+      <tag>贪心</tag>
       
     </tags>
     
@@ -121,6 +131,8 @@
     
     <categories>
       
+      <category>Algorithm Design</category>
+      
       <category>LeetCode</category>
       
       <category>基础</category>
@@ -130,7 +142,7 @@
     
     <tags>
       
-      <tag>Algorithm Design</tag>
+      <tag>滑动窗口</tag>
       
     </tags>
     
@@ -148,18 +160,14 @@
     
     <categories>
       
+      <category>Algorithm Design</category>
+      
       <category>LeetCode</category>
       
       <category>基础</category>
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>Algorithm Design</tag>
-      
-    </tags>
     
   </entry>
   
@@ -175,6 +183,8 @@
     
     <categories>
       
+      <category>Program Language</category>
+      
       <category>Batch</category>
       
       <category>基础</category>
@@ -184,7 +194,7 @@
     
     <tags>
       
-      <tag>Program Language</tag>
+      <tag>???</tag>
       
     </tags>
     
@@ -202,6 +212,8 @@
     
     <categories>
       
+      <category>Computer Science</category>
+      
       <category>408</category>
       
       <category>基础</category>
@@ -211,7 +223,7 @@
     
     <tags>
       
-      <tag>Computer Science</tag>
+      <tag>考研笔记</tag>
       
     </tags>
     
@@ -229,18 +241,14 @@
     
     <categories>
       
+      <category>Algorithm Design</category>
+      
       <category>LeetCode</category>
       
       <category>基础</category>
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>Algorithm Design</tag>
-      
-    </tags>
     
   </entry>
   
@@ -256,6 +264,8 @@
     
     <categories>
       
+      <category>System Platform</category>
+      
       <category>Android</category>
       
       <category>基础</category>
@@ -265,7 +275,7 @@
     
     <tags>
       
-      <tag>System Platform</tag>
+      <tag>FPS</tag>
       
     </tags>
     
@@ -283,6 +293,8 @@
     
     <categories>
       
+      <category>System Platform</category>
+      
       <category>Android</category>
       
       <category>基础</category>
@@ -292,7 +304,7 @@
     
     <tags>
       
-      <tag>System Platform</tag>
+      <tag>View</tag>
       
     </tags>
     
@@ -310,18 +322,14 @@
     
     <categories>
       
+      <category>Program Language</category>
+      
       <category>C++</category>
       
       <category>基础</category>
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>Program Language</tag>
-      
-    </tags>
     
   </entry>
   
