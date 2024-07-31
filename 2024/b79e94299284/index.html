@@ -18,24 +18,24 @@
   <meta name="author" content="Grit">
   <meta name="keywords" content="">
   
-    <meta name="description" content="记录 Android 帧率相关的一些操作，以便查阅。 1. 实时获取 FPS 2. 关闭 VSync (TBD) 3. 在 GL 线程中自定义 FPS (TBD) 4. —— —— ——">
+    <meta name="description" content="算法刷题：有效的括号。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android 帧率获取">
-<meta property="og:url" content="https://learn.hello-yzg.cn/2023/da0ce45cc34a/">
+<meta property="og:title" content="有效的括号">
+<meta property="og:url" content="https://learn.hello-yzg.cn/2024/b79e94299284/">
 <meta property="og:site_name" content="Grit&#39;s Note_Book">
-<meta property="og:description" content="记录 Android 帧率相关的一些操作，以便查阅。 1. 实时获取 FPS 2. 关闭 VSync (TBD) 3. 在 GL 线程中自定义 FPS (TBD) 4. —— —— ——">
+<meta property="og:description" content="算法刷题：有效的括号。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-10-20T07:09:40.360Z">
-<meta property="article:modified_time" content="2023-12-19T08:11:10.000Z">
+<meta property="article:published_time" content="2024-07-24T06:03:29.790Z">
+<meta property="article:modified_time" content="2024-07-31T02:48:26.000Z">
 <meta property="article:author" content="Grit">
-<meta property="article:tag" content="FPS">
+<meta property="article:tag" content="栈">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Android 帧率获取 - Grit&#39;s Note_Book</title>
+  <title>有效的括号 - Grit&#39;s Note_Book</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Android 帧率获取"></span>
+            <span id="subtitle" data-typed-text="有效的括号"></span>
           
         </div>
 
@@ -229,8 +229,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-20 15:09" pubdate>
-          2023年10月20日 下午
+        <time datetime="2024-07-24 14:03" pubdate>
+          2024年7月24日 下午
         </time>
       </span>
     
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          2.6k 字
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          6 分钟
+          15 分钟
         
       </span>
     
@@ -298,12 +298,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Android 帧率获取</h1>
+            <h1 style="display: none">有效的括号</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：7 个月前
+                    本文最后更新于：3 小时前
                   
                 
               </p>
@@ -311,9 +311,34 @@
             
               <div class="markdown-body">
                 
-                <h3 id="1-实时获取FPS"><a href="#1-实时获取FPS" class="headerlink" title="1. 实时获取FPS"></a>1. 实时获取FPS</h3><h4 id="代码展示"><a href="#代码展示" class="headerlink" title="代码展示"></a>代码展示</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">DecimalFormat</span> <span class="hljs-variable">format</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DecimalFormat</span>(<span class="hljs-string">&quot;##0.00&quot;</span>);<br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">long</span> <span class="hljs-variable">MONITOR_INTERVAL</span> <span class="hljs-operator">=</span> <span class="hljs-number">160L</span>;<br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">long</span> <span class="hljs-variable">MONITOR_INTERVAL_NANOS</span> <span class="hljs-operator">=</span> MONITOR_INTERVAL * <span class="hljs-number">1000</span> * <span class="hljs-number">1000</span>;<br><span class="hljs-keyword">private</span> <span class="hljs-type">long</span> <span class="hljs-variable">mStartFrameTIme</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br><span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-variable">mFrameCount</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">getFps</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">if</span> (Build.VERSION.SDK_INT &lt; Build.VERSION_CODES.JELLY_BEAN) &#123;<br>        <span class="hljs-keyword">return</span>; <span class="hljs-comment">//SDK版本小于JELLY_BEAN（Android 4.1）</span><br>    &#125;<br>    Choreographer.getInstance().postFrameCallback(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Choreographer</span>.FrameCallback() &#123;<br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doFrame</span><span class="hljs-params">(<span class="hljs-type">long</span> frameTimeNanos)</span> &#123;<br>            <span class="hljs-keyword">if</span> (mStartFrameTIme == <span class="hljs-number">0</span>) &#123;<br>                mStartFrameTIme = frameTimeNanos;<br>            &#125;<br>            <span class="hljs-type">float</span> <span class="hljs-variable">interval</span> <span class="hljs-operator">=</span> (frameTimeNanos - mStartFrameTIme) / <span class="hljs-number">1000000.0f</span>;<br>            <span class="hljs-keyword">if</span> (interval &gt; MONITOR_INTERVAL) &#123;<br>                <span class="hljs-type">double</span> <span class="hljs-variable">fps</span> <span class="hljs-operator">=</span> ((<span class="hljs-type">double</span>) mFrameCount * <span class="hljs-number">1000L</span>) / interval;<br>                Log.i(<span class="hljs-string">&quot;test&quot;</span>, <span class="hljs-string">&quot;fps:&quot;</span> + format.format(FPS));<br>                mFrameCount = <span class="hljs-number">0</span>;<br>                mStartFrameTIme = <span class="hljs-number">0</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                ++mFrameCount;<br>            &#125;<br>            Choreographer.getInstance().postFrameCallback(<span class="hljs-built_in">this</span>); <span class="hljs-comment">//递归获取</span><br>        &#125;<br>    &#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h3 id="有效的括号"><a href="#有效的括号" class="headerlink" title="有效的括号"></a>有效的括号</h3><blockquote>
+<p>编程思想：在case有限且已知的情况下，可以利用数据结构映射，用空间换时间，省去大量的 if-else 判断</p>
+<p>Java Tips</p>
+<ol>
+<li>可以使用匿名内部类快速初始化类似 Map&#x2F;List 的容器类</li>
+<li>继承自 stack 的 pop() 方法不同于C++返回void，返回元素的值</li>
+</ol>
+</blockquote>
+<p>题目：</p>
+<p>给定一个只包括 <code>&#39;(&#39;</code>，<code>&#39;)&#39;</code>，<code>&#39;&#123;&#39;</code>，<code>&#39;&#125;&#39;</code>，<code>&#39;[&#39;</code>，<code>&#39;]&#39;</code> 的字符串 <code>s</code> ，判断字符串是否有效。</p>
+<p>有效字符串需满足：</p>
+<ol>
+<li>左括号必须用相同类型的右括号闭合。</li>
+<li>左括号必须以正确的顺序闭合。</li>
+<li>每个右括号都有一个对应的相同类型的左括号。</li>
+</ol>
+<h4 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h4><p>时间复杂度：$O(n)$</p>
+<p>空间复杂度：$O(n)$，如果输入字符串可以复用，可以做到$O(1)$</p>
+<h5 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//c++</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    unordered_map&lt;<span class="hljs-type">char</span>,<span class="hljs-type">char</span>&gt; mp = &#123;&#123;<span class="hljs-string">&#x27;)&#x27;</span>,<span class="hljs-string">&#x27;(&#x27;</span>&#125;,&#123;<span class="hljs-string">&#x27;]&#x27;</span>,<span class="hljs-string">&#x27;[&#x27;</span>&#125;,&#123;<span class="hljs-string">&#x27;&#125;&#x27;</span>,<span class="hljs-string">&#x27;&#123;&#x27;</span>&#125;,&#125;;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isValid</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span>(s.<span class="hljs-built_in">length</span>() % <span class="hljs-number">2</span>)&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        stack&lt;<span class="hljs-type">char</span>&gt; st;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">char</span> c : s)&#123;<br>            <span class="hljs-keyword">if</span>(!mp.<span class="hljs-built_in">contains</span>(c))&#123;<br>                st.<span class="hljs-built_in">push</span>(c);<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                <span class="hljs-keyword">if</span>(st.<span class="hljs-built_in">empty</span>() || st.<span class="hljs-built_in">top</span>() != mp[c])&#123;<br>                    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>                &#125;<br>                st.<span class="hljs-built_in">pop</span>();<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> st.<span class="hljs-built_in">empty</span>();<br><br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
-<h3 id="2-关闭-VSync-TBD"><a href="#2-关闭-VSync-TBD" class="headerlink" title="2. 关闭 VSync (TBD)"></a>2. 关闭 VSync (TBD)</h3><h3 id="3-在-GL-线程中自定义-FPS-TBD"><a href="#3-在-GL-线程中自定义-FPS-TBD" class="headerlink" title="3. 在 GL 线程中自定义 FPS (TBD)"></a>3. 在 GL 线程中自定义 FPS (TBD)</h3><h3 id="4-——-——-——"><a href="#4-——-——-——" class="headerlink" title="4. —— —— ——"></a>4. —— —— ——</h3>
+<h5 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//java</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isValid</span><span class="hljs-params">(String s)</span> &#123;<br>        <span class="hljs-keyword">if</span>(s.length() % <span class="hljs-number">2</span> != <span class="hljs-number">0</span>)&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        Map&lt;Character, Character&gt; mp = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;()&#123;&#123;<br>            put(<span class="hljs-string">&#x27;)&#x27;</span>,<span class="hljs-string">&#x27;(&#x27;</span>);<br>            put(<span class="hljs-string">&#x27;]&#x27;</span>,<span class="hljs-string">&#x27;[&#x27;</span>);<br>            put(<span class="hljs-string">&#x27;&#125;&#x27;</span>,<span class="hljs-string">&#x27;&#123;&#x27;</span>);<br>        &#125;&#125;;<br>        Deque&lt;Character&gt; st = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDeque</span>&lt;&gt;();<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">char</span> c : s.toCharArray())&#123;<br>            <span class="hljs-keyword">if</span>(!mp.containsKey(c))&#123;<br>                st.push(c);<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                <span class="hljs-keyword">if</span>(st.isEmpty() || st.pop() != mp.get(c))&#123;<br>                    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> st.isEmpty();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="python"><a href="#python" class="headerlink" title="python"></a>python</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#python3</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>(<span class="hljs-title class_ inherited__">object</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">isValid</span>(<span class="hljs-params">self, s</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        :type s: str</span><br><span class="hljs-string">        :rtype: bool</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        mp = &#123;<span class="hljs-string">&#x27;)&#x27;</span>:<span class="hljs-string">&#x27;(&#x27;</span>,<span class="hljs-string">&#x27;]&#x27;</span>:<span class="hljs-string">&#x27;[&#x27;</span>,<span class="hljs-string">&#x27;&#125;&#x27;</span>:<span class="hljs-string">&#x27;&#123;&#x27;</span>&#125;<br>        st = []<br>        <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> s:<br>            <span class="hljs-keyword">if</span> c <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> mp:<br>                st.append(c)<br>            <span class="hljs-keyword">elif</span> <span class="hljs-keyword">not</span> st <span class="hljs-keyword">or</span> st.pop() != mp[c]:<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">not</span> st<br></code></pre></td></tr></table></figure>
+
+<h5 id="C-1"><a href="#C-1" class="headerlink" title="C"></a>C</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">bool</span> <span class="hljs-title function_">isValid</span><span class="hljs-params">(<span class="hljs-type">char</span>* s)</span> &#123;<br>    <span class="hljs-type">char</span> mp[<span class="hljs-number">128</span>] = &#123;&#125;;<br>    mp[<span class="hljs-string">&#x27;)&#x27;</span>] = <span class="hljs-string">&#x27;(&#x27;</span>;<br>    mp[<span class="hljs-string">&#x27;]&#x27;</span>] = <span class="hljs-string">&#x27;[&#x27;</span>;<br>    mp[<span class="hljs-string">&#x27;&#125;&#x27;</span>] = <span class="hljs-string">&#x27;&#123;&#x27;</span>;<br>    <span class="hljs-type">int</span> top = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; s[i]; ++i)&#123;<br>        <span class="hljs-type">char</span> c = s[i];<br>        <span class="hljs-keyword">if</span>(mp[c] == <span class="hljs-number">0</span>)&#123;<br>            s[top++] = c;<br>        &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(top == <span class="hljs-number">0</span> || s[--top] != mp[c])&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> top == <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">string</span>&#125; <span class="hljs-variable">s</span></span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> &#123;<span class="hljs-type">boolean</span>&#125;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">var</span> isValid = <span class="hljs-keyword">function</span>(<span class="hljs-params">s</span>) &#123;<br>    <span class="hljs-keyword">if</span>(s.<span class="hljs-property">length</span> % <span class="hljs-number">2</span>)&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>    <span class="hljs-keyword">const</span> mp = &#123;<span class="hljs-string">&#x27;)&#x27;</span>:<span class="hljs-string">&#x27;(&#x27;</span>,<span class="hljs-string">&#x27;]&#x27;</span>:<span class="hljs-string">&#x27;[&#x27;</span>,<span class="hljs-string">&#x27;&#125;&#x27;</span>:<span class="hljs-string">&#x27;&#123;&#x27;</span>&#125;;<br>    <span class="hljs-keyword">const</span> st = [];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">const</span> c <span class="hljs-keyword">of</span> s)&#123;<br>        <span class="hljs-keyword">if</span>(!mp.<span class="hljs-title function_">hasOwnProperty</span>(c))&#123;<br>            st.<span class="hljs-title function_">push</span>(c);<br>        &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(st.<span class="hljs-property">length</span> === <span class="hljs-number">0</span> || st.<span class="hljs-title function_">pop</span>() !== mp[c])&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> st.<span class="hljs-property">length</span> === <span class="hljs-number">0</span>;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
                 
               </div>
             
@@ -331,17 +356,17 @@
     
       <span class="category-chain">
         
-  <a href="/categories/System-Platform/" class="category-chain-item">System Platform</a>
+  <a href="/categories/Algorithm-Design/" class="category-chain-item">Algorithm Design</a>
   
   
     <span>></span>
     
-  <a href="/categories/System-Platform/Android/" class="category-chain-item">Android</a>
+  <a href="/categories/Algorithm-Design/LeetCode/" class="category-chain-item">LeetCode</a>
   
   
     <span>></span>
     
-  <a href="/categories/System-Platform/Android/%E5%9F%BA%E7%A1%80/" class="category-chain-item">基础</a>
+  <a href="/categories/Algorithm-Design/LeetCode/%E5%9F%BA%E7%A1%80/" class="category-chain-item">基础</a>
   
   
 
@@ -360,7 +385,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/FPS/">#FPS</a>
+        <a href="/tags/%E6%A0%88/">#栈</a>
       
     </div>
   
@@ -372,8 +397,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Android 帧率获取</div>
-      <div>https://learn.hello-yzg.cn/2023/da0ce45cc34a/</div>
+      <div>有效的括号</div>
+      <div>https://learn.hello-yzg.cn/2024/b79e94299284/</div>
     </div>
     <div class="license-meta">
       
@@ -385,13 +410,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月20日</div>
+          <div>2024年7月24日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年12月19日</div>
+          <div>2024年7月31日</div>
         </div>
       
       
@@ -422,18 +447,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/dca8257178c4/" title="两数之和">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">两数之和</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/34ae59f9ac53/" title="Android 中的特殊视图">
-                        <span class="hidden-mobile">Android 中的特殊视图</span>
+                      <a href="/2024/a1d1b42c23e1/" title="删除链表的倒数第 N 个结点">
+                        <span class="hidden-mobile">删除链表的倒数第 N 个结点</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
