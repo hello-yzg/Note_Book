@@ -18,23 +18,24 @@
   <meta name="author" content="Grit">
   <meta name="keywords" content="">
   
-    <meta name="description" content="算法刷题：两数之和。">
+    <meta name="description" content="在算法学习中再次使用了递归实现，这一次反而比刚学习时更加困惑了，于是查阅了一些资料，有了一些新的理解，在这里记录。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="两数之和">
-<meta property="og:url" content="https://learn.hello-yzg.cn/2023/dca8257178c4/">
+<meta property="og:title" content="递归是什么">
+<meta property="og:url" content="https://learn.hello-yzg.cn/2024/e2dae0ff7bf2/">
 <meta property="og:site_name" content="Grit&#39;s Note_Book">
-<meta property="og:description" content="算法刷题：两数之和。">
+<meta property="og:description" content="在算法学习中再次使用了递归实现，这一次反而比刚学习时更加困惑了，于是查阅了一些资料，有了一些新的理解，在这里记录。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-10-20T08:27:10.650Z">
-<meta property="article:modified_time" content="2023-12-19T08:24:04.000Z">
+<meta property="article:published_time" content="2024-08-05T08:46:10.360Z">
+<meta property="article:modified_time" content="2024-08-05T10:34:38.000Z">
 <meta property="article:author" content="Grit">
+<meta property="article:tag" content="递归">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>两数之和 - Grit&#39;s Note_Book</title>
+  <title>递归是什么 - Grit&#39;s Note_Book</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -212,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="两数之和"></span>
+            <span id="subtitle" data-typed-text="递归是什么"></span>
           
         </div>
 
@@ -228,8 +229,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-20 16:27" pubdate>
-          2023年10月20日 下午
+        <time datetime="2024-08-05 16:46" pubdate>
+          2024年8月5日 下午
         </time>
       </span>
     
@@ -240,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.3k 字
+          2k 字
         
       </span>
     
@@ -251,7 +252,7 @@
         
         
         
-          13 分钟
+          11 分钟
         
       </span>
     
@@ -297,12 +298,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">两数之和</h1>
+            <h1 style="display: none">递归是什么</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：8 个月前
+                    本文最后更新于：2 分钟前
                   
                 
               </p>
@@ -310,28 +311,55 @@
             
               <div class="markdown-body">
                 
-                <h3 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h3><blockquote>
-<p>C++ Tips</p>
-<ol>
-<li><p>参数为引用时（&amp; 或 *），直接操作原始数据</p>
-</li>
-<li><p>C++11 引入 unordered_map（哈希表的数据结构）</p>
-</li>
-</ol>
+                <h3 id="递归是什么"><a href="#递归是什么" class="headerlink" title="递归是什么"></a>递归是什么</h3><p>引用来自知乎作者 [Fireman A] 针对汉诺塔问题的回答，包含着对递归的深刻理解，同时充满悬疑短篇的猎奇感：</p>
+<blockquote>
+<p>你来到某个热带丛林，意外发现了十层之高的汉诺塔。正当你苦苦思索如何搬动它时，林中出来一个土著，毛遂自荐要帮你搬塔。他名叫二傻，戴着一个草帽，草帽上有一个2字，号称会把一到二号盘搬到任意柱。</p>
+<p>你灵机一动，问道：“你该不会有个兄弟叫三傻吧？”</p>
+<p>“对对，哥你咋知道的？他会搬一到三号盘。“</p>
+<p>”那你去把他叫来，我不需要你了。“</p>
+<p>于是三傻来了，他也带着个草帽，上面有个3字。</p>
+<p>你说：”三傻，你帮我把头三个盘子移到 C吧。“</p>
+<p>三傻沉吟了一会，走进树林，你听见他大叫：”二傻，出来帮我把头两个盘子搬到 C !“</p>
+<p>由于天气炎热你开始打瞌睡。朦胧中你没看见二傻是怎么工作的，二傻干完以后，走入林中大叫一声：“老三，我干完了!”</p>
+<p>三傻出来，把三号盘从 A 搬到 B，然后又去叫二傻：“老二，帮我把头两个盘子搬回 A !”</p>
+<p>三傻其实只搬三号盘，其他叫二傻出来干。最后一步是三傻把三号盘搬到 C，然后呼叫二傻来把头两个盘子搬回 C。</p>
+<p>事情完了之后你把三傻叫来，对他说：“其实你不知道怎么具体一步一步把三个盘子搬到 C，是吧？”</p>
+<p>三傻不解地说：“我不是把任务干完了？”</p>
+<p>你说：“可你其实你兄弟二傻干了大部分工作呀？”</p>
+<p>三傻说：“他不是我喊来的吗？”</p>
+<p>你问到：“那二傻是不是也喊了别人？“</p>
+<p>三傻笑了：“这关我什么事？”</p>
+<p>你苦苦思索了一夜，第二天，你走入林中大叫：“十傻，你在哪？”</p>
+<p>一个头上带着10号草帽的人，十傻，应声而出：“哥，你有什么事？”</p>
+<p>“我要你帮把1到10号盘子搬到 C。“</p>
+<p>“好的，老爷。“十傻转身就向林内走。</p>
+<p>“慢着，你该不是回去叫你兄弟九傻吧？“</p>
+<p>“你怎么知道的？“</p>
+<p>“所以你使唤他把头九个盘子搬过来搬过去，你只要搬几次十号盘就好了，对吗？“</p>
+<p>“对呀！“</p>
+<p>“你知不知道他是怎么干的？“</p>
+<p>“这关我什么事？“</p>
+<p>你叹了一口气，决定放弃追问。十傻开始干活。树林里充满了此起彼伏的叫声：</p>
+<p>“九傻，来一下！“ </p>
+<p>“老八，到你了！“</p>
+<p>“五傻！。。。“</p>
+<p>”三傻！。。。“</p>
+<p>”大傻！“</p>
+<p>你注意到大傻从不叫人，但是大傻的工作也最简单，他只是把一号盘搬来搬去。一段时间后，工作结束了。十傻来到你面前。</p>
+<p>你问十傻：“是谁教给你们这么干活的？“</p>
+<p>十傻说：“我爸爸。他给我留了这张纸条。”</p>
+<p>他从口袋里掏出一张小纸条，上面写着：“照你帽子的号码搬盘子到目标柱。如果有盘子压住你，叫你上面一位哥哥把他搬走。如果有盘子占住你要去的柱子，叫你哥哥把它搬到不碍事的地方。等你的盘子搬到了目标，告诉你上面一位哥哥你做完了。“</p>
+<p>你不解地问：“那大傻没有哥哥怎么办？“</p>
+<p>十傻笑了：“他只管一号盘，所以永远不会碰到这种情况。”</p>
+<p>但这时他突然变了颜色，好像泄漏了巨大的机密。他惊慌地看了你一眼，飞快地逃入树林。第二天，你到树林里去搜寻这十兄弟。他们已经不知去向。你找到了一个小屋，只容一个人居住，但是屋里有十顶草帽，写着一到十号的号码。</p>
 </blockquote>
-<p>题目：</p>
-<p>给定一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code>，请你在该数组中找出 <strong>和为目标值</strong> <em><code>target</code></em> 的那 <strong>两个</strong> 整数，并返回它们的数组下标。你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。你可以按任意顺序返回答案。</p>
-<h4 id="哈希查找"><a href="#哈希查找" class="headerlink" title="哈希查找"></a>哈希查找</h4><p>时间复杂度：O(<em>n</em>)</p>
-<p>空间复杂度：O(<em>n</em>)</p>
-<h5 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//c++</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">twoSum</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> target)</span> </span>&#123;<br>        unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; hashtable;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.<span class="hljs-built_in">size</span>(); ++i)&#123;<br>            <span class="hljs-keyword">auto</span> it = hashtable.<span class="hljs-built_in">find</span>(target - nums[i]);<br>            <span class="hljs-keyword">if</span>(it != hashtable.<span class="hljs-built_in">end</span>())&#123;<br>                <span class="hljs-keyword">return</span> &#123;it-&gt;second, i&#125;;<br>            &#125;<br>            hashtable[nums[i]] = i;<br>        &#125;<br>        <span class="hljs-keyword">return</span> &#123;&#125;;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-
-<h5 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//java</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] twoSum(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> target) &#123;<br>        Map&lt;Integer,Integer&gt; hashtable = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;Integer, Integer&gt;();<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; nums.length; ++i)&#123;<br>            <span class="hljs-keyword">if</span>(hashtable.containsKey(target-nums[i]))&#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;hashtable.get(target - nums[i]),i&#125;;<br>            &#125;<br>            hashtable.put(nums[i],i);<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">0</span>];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h5 id="python"><a href="#python" class="headerlink" title="python"></a>python</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#python3</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">twoSum</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], target: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:<br>        hashtable = <span class="hljs-built_in">dict</span>()<br>        <span class="hljs-keyword">for</span> i, num <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(nums):<br>            <span class="hljs-keyword">if</span> target - num <span class="hljs-keyword">in</span> hashtable:<br>                <span class="hljs-keyword">return</span> [hashtable[target - num], i]<br>            hashtable[nums[i]] = i<br>        <span class="hljs-keyword">return</span> []<br></code></pre></td></tr></table></figure>
-
-<h5 id="C-1"><a href="#C-1" class="headerlink" title="C"></a>C</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//c</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">hashTable</span> &#123;</span><br>    <span class="hljs-type">int</span> key;<br>    <span class="hljs-type">int</span> val;<br>    UT_hash_handle hh;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">hashTable</span>* <span class="hljs-title">hashtable</span>;</span><br><br><span class="hljs-keyword">struct</span> hashTable* <span class="hljs-title function_">find</span><span class="hljs-params">(<span class="hljs-type">int</span> ikey)</span> &#123;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">hashTable</span>* <span class="hljs-title">tmp</span>;</span><br>    HASH_FIND_INT(hashtable, &amp;ikey, tmp);<br>    <span class="hljs-keyword">return</span> tmp;<br>&#125;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> ikey, <span class="hljs-type">int</span> ival)</span> &#123;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">hashTable</span>* <span class="hljs-title">it</span> =</span> find(ikey);<br>    <span class="hljs-keyword">if</span> (it == <span class="hljs-literal">NULL</span>) &#123;<br>        <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">hashTable</span>* <span class="hljs-title">tmp</span> =</span> <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> hashTable));<br>        tmp-&gt;key = ikey, tmp-&gt;val = ival;<br>        HASH_ADD_INT(hashtable, key, tmp);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        it-&gt;val = ival;<br>    &#125;<br>&#125;<br><br><span class="hljs-type">int</span>* <span class="hljs-title function_">twoSum</span><span class="hljs-params">(<span class="hljs-type">int</span>* nums, <span class="hljs-type">int</span> numsSize, <span class="hljs-type">int</span> target, <span class="hljs-type">int</span>* returnSize)</span> &#123;<br>    hashtable = <span class="hljs-literal">NULL</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; numsSize; i++) &#123;<br>        <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">hashTable</span>* <span class="hljs-title">it</span> =</span> find(target - nums[i]);<br>        <span class="hljs-keyword">if</span> (it != <span class="hljs-literal">NULL</span>) &#123;<br>            <span class="hljs-type">int</span>* ret = <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>) * <span class="hljs-number">2</span>);<br>            ret[<span class="hljs-number">0</span>] = it-&gt;val, ret[<span class="hljs-number">1</span>] = i;<br>            *returnSize = <span class="hljs-number">2</span>;<br>            <span class="hljs-keyword">return</span> ret;<br>        &#125;<br>        insert(nums[i], i);<br>    &#125;<br>    *returnSize = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h5 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//javascript</span><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">number[]</span>&#125; <span class="hljs-variable">nums</span></span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">number</span>&#125; <span class="hljs-variable">target</span></span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> &#123;<span class="hljs-type">number[]</span>&#125;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">var</span> twoSum = <span class="hljs-keyword">function</span> (<span class="hljs-params">nums, target</span>) &#123;<br>    <span class="hljs-keyword">let</span> idx = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>(); <br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; ; j++) &#123;<br>        <span class="hljs-keyword">const</span> x = nums[j];<br>        <span class="hljs-keyword">if</span> (idx.<span class="hljs-title function_">has</span>(target - x)) <br>            <span class="hljs-keyword">return</span> [idx.<span class="hljs-title function_">get</span>(target - x), j]; <br>        idx.<span class="hljs-title function_">set</span>(x, j); <br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>其实，递归之所以不能被我们很轻易的理解，是因为它的本质是一种”顶层设计“，这种自上而下的思维与人的正向思维相悖。我们一般的思维是自下而上的，是递推的，比如我们学习一篇课文，先要学会字，然后是词，再是句，最后成段，从基础到进阶，这是最有安全感的，因为每一步我们都清晰可控，我们花了大量的时间去经营过程，这是本能的思维，就像计算机先出现面向过程编程。</p>
+<p>但当问题达到一定规模，或者我们拥有了大量递推经验时，再次面对同类问题时，我们又会本能地厌倦了循环往复的推演，有没有一种方式可以跳过这些过程呢？于是，我们开始偷懒，当一个规模为 n 的问题出现时，n-1 成为了偷懒的目标，发问：</p>
+<p><strong>如果 n-1 规模可以被解决，那么 n 规模是否同理？</strong></p>
+<p>从这里可以看出，递归是有它的特征的，即规模本身存在着一定的逻辑规律，不然怎么满足”同理“？换句话时，每一级规模都可以通过同一个变换得到，最常见的数学模型就是等差或等比队列。</p>
+<p>那么，得到了肯定的答案后，结合代数思维，我们开始对问题进行降级，这个过程中，我们需要有一个定则：<strong>对数学归纳法的信任</strong>。为什么这么说，只有信任，我们才能不断对问题进行分解，否则分解到一半，可能就会怀疑，这中间是怎么实现的，我连怎么实现的都不知道，我怎么知道结果是不是正确的？自此我们刚刚建立的顶层思维将坍塌，重新回到解决问题的起点。递归之所以很难被人理解的桎梏就在这里，它比面向对象编程更加让我们感到没有安全感，但本质上，是我们脱离”亲力亲为”之后的滞空感。</p>
+<p>只有我们信任身后的一切，才能轻松向后倒下，递易，归难。</p>
+<p>花了大篇幅来讲递归的思想，可能会有人觉得华而不实，不如把时间花在一些递归的实际算法场景上，不然实际应用完全不知道怎么写递归，什么时候写递归，说实话，我也不全知道，但我在回顾一些旧的递归算法时，多了清晰感，不再那么有距离，那么严肃，对我来讲，这是一个好迹象。</p>
 
                 
               </div>
@@ -350,17 +378,17 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Algorithm-Design/" class="category-chain-item">Algorithm Design</a>
+  <a href="/categories/Computer-Thinking/" class="category-chain-item">Computer Thinking</a>
   
   
     <span>></span>
     
-  <a href="/categories/Algorithm-Design/LeetCode/" class="category-chain-item">LeetCode</a>
+  <a href="/categories/Computer-Thinking/%E5%88%86%E5%B1%82%E6%80%9D%E7%BB%B4/" class="category-chain-item">分层思维</a>
   
   
     <span>></span>
     
-  <a href="/categories/Algorithm-Design/LeetCode/%E5%9F%BA%E7%A1%80/" class="category-chain-item">基础</a>
+  <a href="/categories/Computer-Thinking/%E5%88%86%E5%B1%82%E6%80%9D%E7%BB%B4/%E5%9F%BA%E7%A1%80/" class="category-chain-item">基础</a>
   
   
 
@@ -376,6 +404,13 @@
     </div>
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%80%92%E5%BD%92/">#递归</a>
+      
+    </div>
+  
 </div>
 
 
@@ -384,8 +419,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>两数之和</div>
-      <div>https://learn.hello-yzg.cn/2023/dca8257178c4/</div>
+      <div>递归是什么</div>
+      <div>https://learn.hello-yzg.cn/2024/e2dae0ff7bf2/</div>
     </div>
     <div class="license-meta">
       
@@ -397,13 +432,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月20日</div>
+          <div>2024年8月5日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2023年12月19日</div>
+          <div>2024年8月5日</div>
         </div>
       
       
@@ -434,18 +469,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/70527323af9f/" title="数据结构">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数据结构</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/da0ce45cc34a/" title="Android 帧率获取">
-                        <span class="hidden-mobile">Android 帧率获取</span>
+                      <a href="/2024/9eef6de8bbaa/" title="合并两个有序链表">
+                        <span class="hidden-mobile">合并两个有序链表</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
